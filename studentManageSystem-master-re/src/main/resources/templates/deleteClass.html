@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>删除班级</title>
+
+    <!---->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!---->
+
+    <!-- 新 Bootstrap4 核心 CSS 文件 -->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="/jquery-3.2.1.js"></script>
+
+    <!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
+    <script src="/js/bootstrap.bundle.js"></script>
+
+    <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+    <script src="/js/bootstrap.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+    <!--这是顶部信息栏-->
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <span th:text="${userName}"></span>你好，
+            <span th:if="${userType}==2">你的权限是教师</span>
+            <!--这里是面包屑导航-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item "><a href="/insertClass">添加班级信息</a></li>
+                <li class="breadcrumb-item  active">删除班级信息</li>
+                <li class="breadcrumb-item"><a href="/toInsertStuInfo">添加学生信息</a></li>
+                <li class="breadcrumb-item"><a th:href="@{/deleteStu/{pageNum}(pageNum=1)}">删除学生信息</a></li>
+                <li class="breadcrumb-item "><a href="/toInsertCourseInfo">添加课程信息</a></li>
+                <li class="breadcrumb-item "><a href="/deletCourse">删除课程信息</a></li>
+                <li class="breadcrumb-item "><a href="/toInsertScore">添加成绩</a></li>
+                <li class="breadcrumb-item"><a th:href="@{/deleteScore/{pageNum}(pageNum=1)}">删除学生成绩</a></li>
+            </ol>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <table class="table table-bordered">
+                <tr>
+                    <td>班级号</td>
+                    <td>班级名称</td>
+                    <td>学院</td>
+                    <td>年级</td>
+                </tr>
+                <tr th:each="list : ${classList}">
+                    <td th:text="${list.classNo}"></td>
+                    <td th:text="${list.className}"></td>
+                    <td th:text="${list.institute}"></td>
+                    <td th:text="${list.grade}"></td>
+                    <td>
+                        <a th:href="@{/deleteCla/{classNo}(classNo=${list.classNo})}">删除</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a th:href="@{/deleteClass/{pageNum}(pageNum=1)}">首页</a>
+                    </td>
+                    <td th:if="${pageNum}!=1">
+                        <a th:href="@{/deleteClass/{pageNum}(pageNum=${pageNum-1})}">上一页</a>
+                    </td>
+                    <td th:if="${pageNum}!=${totalPage}">
+                        <a th:href="@{/deleteClass/{pageNum}(pageNum=${pageNum+1})}">下一页</a>
+                    </td>
+                    <td>
+                        <a th:href="@{/deleteClass/{pageNum}(pageNum=${totalPage})}">尾页</a>
+                    </td>
+                    <td>
+                        第<span th:text="${pageNum}"></span>页/<span th:text="${totalPage}"></span>页
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.learn.system.mapper.ManageMapper">
+
+    <insert id="insertScore" parameterType="com.learn.system.pojo.Score">
+        insert into score (courseNo, teacherNo, studentNo, score) values
+                          (#{courseNo}, #{teacherNo}, #{studentNo}, #{score}, 0)
+    </insert>
+
+
+    <delete id="deleteScore" parameterType="String">
+        delete from score where studentNo = #{studentNo} AND courseNo = #{courseNo}
+    </delete>
+
+    <select id="querySAllScore" parameterType="String" resultType="ArrayList">
+        select * from score where studentNo = #{studentNo}
+    </select>
+
+</mapper>

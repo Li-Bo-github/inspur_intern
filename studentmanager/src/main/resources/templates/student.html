@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col1">
+            <span th:text="${userName}"></span>你好，
+            <span th:if="${userType}==1">你的权限是学生</span>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <form action="/insertScore" method="POST">
+    <div class="row" >
+        <div class="col2"></div>
+        <table class="table table-bordered">
+            <tr >
+                <td>课程号</td>
+                <td>授课教师</td>
+                <td>学生</td>
+                <td>分数</td>
+            </tr>
+            <tr th:each="list : ${scoreList}">
+                <td th:text="${list.courseNo}"></td>
+                <td th:text="${list.teacherNo}"></td>
+                <td th:text="${list.studentNo}"></td>
+                <td th:text="${list.score}"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</div>
+
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<footer th:fragment="companyInfo">
+    <p>首页 ©2020 SpringBoot</p>
+</footer>
+</body>
+</html>

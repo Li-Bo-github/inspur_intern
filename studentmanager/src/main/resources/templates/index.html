@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>学生成绩管理系统</title>
+</head>
+<body>
+
+<div class="container">
+<form action="/login" method="post">
+    <div class="row">
+        <h3>欢迎使用学生成绩管理系统</h3>
+        <div th:if="${loginAgain} == 1" class="row">
+            <div class="col4">账号或密码错误，请重新输入</div>
+        </div>
+    </div>
+
+        <div class="row">
+            <div class="col4" >
+
+                <div class="form-group">
+                    <label for="usr">用户名:</label>
+                    <input type="text" class="form-control" id="usr" name="username" placeholder="请输入用户名">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">密码:</label>
+                    <input type="password" class="form-control" id="pwd" name="password" placeholder="请输入密码">
+                </div>
+            </div>
+            <div class="col4" ></div>
+        </div>
+
+    <div class="row">
+        <div class="col4"></div>
+        <div class="col4" >
+            <button type="submit"  class="btn btn-primary">登录</button>
+        </div>
+        <div class="col4" ></div>
+    </div>
+</form>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+<div class="container" th:if="${restriction}==1">
+    <div class="row" th:if="${restriction}==1">
+        <div class="col1">
+            <span th:text="${userName}">你好，你的权限是学生</span>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+    <div class="row" >
+        <div class="col2"></div>
+        <table class="table table-bordered">
+            <tr >
+                <td>课程号</td>
+                <td>课程名</td>
+                <td>授课教师</td>
+                <td>分数</td>
+            </tr>
+
+        </table>
+        </div>
+    </div>
+</div>
+
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<footer th:fragment="companyInfo">
+    <p>首页 ©2020 SpringBoot</p>
+</footer>
+</body>
+</html>
